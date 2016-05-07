@@ -1,4 +1,5 @@
-import path from 'path';
+import path from 'path'
+import webpack from 'webpack'
 import baseConfig from './webpack.config.base'
 
 export default {
@@ -10,7 +11,7 @@ export default {
 
   entry: [
     'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr',
-    './app/main.js'
+    './app/entry.js'
   ],
   module: {
     ...baseConfig.module
