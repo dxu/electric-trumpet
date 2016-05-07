@@ -2,6 +2,11 @@
   "name": "electric-trumpet",
   "version": "0.0.0",
   "main": "main.js",
+  "scripts": {
+    "start-hot": "electron -r babel-register ./main.js",
+    "hot-server": "node -r babel-register dev.js",
+    "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\""
+  },
   "devDependencies": {
     "babel-core": "^6.8.0",
     "babel-loader": "^6.2.4",
