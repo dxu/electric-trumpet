@@ -3,11 +3,11 @@ import { guid } from '../util/helpers'
 export const ADD_ITEM = 'ADD_ITEM'
 export const ADD_ARCHIVE = 'ADD_ARCHIVE'
 
-export const addItem = (text) => {
+export const addItem = (data) => {
   return {
     type: ADD_ITEM,
     id: guid(),
-    text
+    text: data.text
   }
 }
 
@@ -19,4 +19,3 @@ export const addArchive = (data) => {
   }
 }
 
-export default actions
