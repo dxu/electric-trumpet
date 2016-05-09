@@ -1,4 +1,4 @@
-import List from './components/List'
+import App from './components/App'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -15,7 +15,7 @@ function ready(fn) {
 
 ready(() => {
   ReactDOM.render(
-    <List />,
+    <App />,
     document.body
   )
 })
