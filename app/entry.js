@@ -8,7 +8,6 @@ import { addItem, addArchive } from './actions'
 import store from './store'
 
 let x = 10
-console.log(x)
 
 function ready(fn) {
   if (document.readyState != 'loading'){
@@ -37,24 +36,24 @@ ready(() => {
   )
 
   // Dispatch some actions
-  store.dispatch(addItem({
-    text: 'item name 1'
-  }))
-  store.dispatch(addItem({
-    text: 'item name 2'
-  }))
-  store.dispatch(addItem({
-    text: 'item name 3'
-  }))
-  store.dispatch(addArchive({
-    name: 'archive name 1'
-  }))
-  store.dispatch(addArchive({
-    name: 'archive name 2'
-  }))
-  store.dispatch(addArchive({
-    name: 'archive name 3'
-  }))
+  // store.dispatch(addItem({
+  //   text: 'item name 1'
+  // }))
+  // store.dispatch(addItem({
+  //   text: 'item name 2'
+  // }))
+  // store.dispatch(addItem({
+  //   text: 'item name 3'
+  // }))
+  // store.dispatch(addArchive({
+  //   name: 'archive name 1'
+  // }))
+  // store.dispatch(addArchive({
+  //   name: 'archive name 2'
+  // }))
+  // store.dispatch(addArchive({
+  //   name: 'archive name 3'
+  // }))
 
   // Stop listening to state updates
   unsubscribe()

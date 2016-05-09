@@ -6,18 +6,23 @@ import App from './App'
 
 
 const selectActiveArchive = (archives, activeArchiveID) => {
-  console.log(archives.toJS(), activeArchiveID)
   return archives.find(archive => activeArchiveID === archive.get('id'))
 }
 
 
 // these selectors will handle the unflattening of the store.
 const selectors = (state) => {
-  console.log(state.toJS())
+  const activeArchive = 
+    selectActiveArchive(state.get('archives'), state.get('activeArchive'))
+      .merge({
+        items: state.get('items').filter(item => item.archive_id === state.get('activeArchive'))
+      })
+  console.log('s', activeArchive.items)
+  console.log('s', activeArchive.toJS())
   return {
     items: state.get('items'),
     archives: state.get('archives'),
-    activeArchive: selectActiveArchive(state.get('archives'), state.get('activeArchive'))
+    activeArchive: activeArchive
   }  
 }
 

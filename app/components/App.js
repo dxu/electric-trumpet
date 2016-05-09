@@ -13,12 +13,12 @@ const App = React.createClass({
     activeArchive: ImmutableProptypes.map.isRequired,
   },
   render: function() {
-    console.log(this.props, 'props')
     let { activeArchive } = this.props
+    console.log(activeArchive.toJS())
     return (
       <div>
         <Input />
-        <Archive key={ activeArchive.get('id') } name={ activeArchive.get('name') }/>
+        <Archive key={ activeArchive.get('id') } name={ activeArchive.get('name') } items={ activeArchive.get('items') } />
       </div>
     )
   }
