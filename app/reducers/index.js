@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import { ADD_ITEM, ADD_ARCHIVE } from './actions'
+import { combineReducers } from 'redux-immutablejs'
+import { ADD_ITEM, ADD_ARCHIVE } from '../actions'
 
 import Immutable from 'immutable'
 
