@@ -7,11 +7,12 @@ const Archive = React.createClass({
     items: ImmutableProptypes.list.isRequired
   },
   render: function() {
+    console.log('hwoeijf', this.props.items.toJS())
     return (
       <div>
         {
           this.props.items.map((data) => {
-            <Item key={ data.id } text={ data.text } />
+            return <Item key={ data.get('id') } text={ data.get('text') } />
           })
         }
       </div>

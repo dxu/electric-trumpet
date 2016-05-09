@@ -36,12 +36,12 @@ ready(() => {
   )
 
   // Dispatch some actions
-  // store.dispatch(addItem({
-  //   text: 'item name 1'
-  // }))
-  // store.dispatch(addItem({
-  //   text: 'item name 2'
-  // }))
+  store.dispatch(addItem({
+    text: 'item name 1'
+  }))
+  store.dispatch(addItem({
+    text: 'item name 2'
+  }))
   // store.dispatch(addItem({
   //   text: 'item name 3'
   // }))

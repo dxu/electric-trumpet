@@ -14,7 +14,7 @@ const App = React.createClass({
   },
   render: function() {
     let { activeArchive } = this.props
-    console.log(activeArchive.toJS())
+    console.log(activeArchive.toJS(), 'js')
     return (
       <div>
         <Input />

@@ -15,9 +15,9 @@ const selectors = (state) => {
   const activeArchive = 
     selectActiveArchive(state.get('archives'), state.get('activeArchive'))
       .merge({
-        items: state.get('items').filter(item => item.archive_id === state.get('activeArchive'))
+        items: state.get('items').filter(item => item.get('archive_id') === state.get('activeArchive'))
       })
-  console.log('s', activeArchive.items)
+  console.log('s', activeArchive.get('items'))
   console.log('s', activeArchive.toJS())
   return {
     items: state.get('items'),
