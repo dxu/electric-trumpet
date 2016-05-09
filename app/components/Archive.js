@@ -5,9 +5,6 @@ const Archive = React.createClass({
   render: () => {
     return (
       <div>
-        <Input />
-        <List />
-        <Archive />
       </div>
     )
   }

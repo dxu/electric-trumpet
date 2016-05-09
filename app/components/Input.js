@@ -5,7 +5,6 @@ const Input = React.createClass({
   render: () => {
     return (
       <div contentEditable="true">
-        Enter your shit
       </div>
     )
   }
