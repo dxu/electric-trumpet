@@ -6,7 +6,6 @@ const Item = React.createClass({
   },
 
   render: function() {
-    console.log('text', this.props)
     return (
       <div>
         { this.props.text }

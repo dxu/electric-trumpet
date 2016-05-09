@@ -7,7 +7,6 @@ const Archive = React.createClass({
     items: ImmutableProptypes.list.isRequired
   },
   render: function() {
-    console.log('hwoeijf', this.props.items.toJS())
     return (
       <div>
         {
