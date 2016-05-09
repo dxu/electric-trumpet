@@ -1,10 +1,19 @@
 import React from 'react'
+import Item from './Item'
+import ImmutableProptypes from 'react-immutable-proptypes'
 
-// renders a single list, handles the list of lists
 const Archive = React.createClass({
-  render: () => {
+  propTypes: {
+    items: ImmutableProptypes.list.isRequired
+  },
+  render: function() {
     return (
       <div>
+        {
+          this.props.items.map((data) => {
+            <Item key={ data.id } text={ data.text } />
+          })
+        }
       </div>
     )
   }
