@@ -7,10 +7,14 @@ import Archive from './Archive'
 
 // renders a single list, handles the list of lists
 const App = React.createClass({
+  add: function() {
+    this.props.addArchive('teststs')
+  },
   render: function() {
     console.log(this.props, 'props')
     return (
-      <div>
+      <div onClick={ this.add }>
+    
         <Input />
         <List />
         <Archive />
