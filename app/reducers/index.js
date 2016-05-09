@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux-immutablejs'
-import { ADD_ITEM, ADD_ARCHIVE } from '../actions'
+import { ADD_ITEM, ADD_ARCHIVE, SET_ACTIVE_ARCHIVE } from '../actions'
+
+import { DEFAULT_ARCHIVE_ID } from '../util/constants'
 
 import Immutable from 'immutable'
-
 
 /*
  * Structure of the Store:
@@ -49,9 +50,19 @@ function items(state = Immutable.List(), action) {
   }
 }
 
+function activeArchive(state = DEFAULT_ARCHIVE_ID, action) {
+  switch (action.type) {
+    case SET_ACTIVE_ARCHIVE:
+      return action.id
+    default:
+      return state
+  }
+}
+
 const reducers = combineReducers({
   archives,
-  items
+  items,
+  activeArchive
 })
 
 export default reducers
