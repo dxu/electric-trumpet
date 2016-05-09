@@ -16,6 +16,6 @@ function ready(fn) {
 ready(() => {
   ReactDOM.render(
     <App />,
-    document.body
+    document.getElementById('genesis')
   )
 })
