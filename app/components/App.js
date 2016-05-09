@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 import List from './List'
 import Input from './Input'
@@ -19,16 +18,4 @@ const App = React.createClass({
     )
   }
 })
-
-const selectors = (state) => {
-  return {
-    items: state.get('items'),
-    archives: state.get('archives')
-  }  
-}
-
-const dispatchers = (dispatch) => {
-  return {} 
-}
-
-export default connect(selectors, dispatchers)(App)
+export default App

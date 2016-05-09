@@ -1,4 +1,4 @@
-import App from './components/App'
+import Conduit from './components/Conduit'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Immutable from 'immutable'
@@ -21,7 +21,7 @@ function ready(fn) {
 ready(() => {
   ReactDOM.render(
     <Provider store={ store }>
-      <App />
+      <Conduit />
     </Provider>,
     document.getElementById('genesis')
   )
