@@ -2,6 +2,7 @@ import App from './components/App'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Immutable from 'immutable'
+import { Provider } from 'react-redux'
 
 import { addItem, addArchive } from './actions'
 import store from './store'
@@ -19,7 +20,9 @@ function ready(fn) {
 
 ready(() => {
   ReactDOM.render(
-    <App />,
+    <Provider store={ store }>
+      <App />
+    </Provider>,
     document.getElementById('genesis')
   )
 
