@@ -1,7 +1,7 @@
 import React from 'react'
 
 // renders a single list, handles the list of lists
-const Input = React.createClass({
+const ItemInput = React.createClass({
   onKey: function(evt) {
     if (evt.keyCode === 13 && !evt.shiftKey) {
       this.props.addItem({
@@ -31,4 +31,4 @@ const Input = React.createClass({
   }
 })
 
-export default Input
+export default ItemInput
