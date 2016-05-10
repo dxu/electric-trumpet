@@ -26,15 +26,15 @@ const selectors = (state) => {
 
 const dispatchers = (dispatch) => {
   return {
-    addItem: (data) => {
+    dispatchAddItem: (data) => {
       dispatch(addItem({
         text: data.text,
         archive_id: data.archive_id
       }))
     },
-    addArchive: (name) => {
+    dispatchAddArchive: (data) => {
       dispatch(addArchive({
-        name: name
+        name: data.name
       }))
     },
   } 

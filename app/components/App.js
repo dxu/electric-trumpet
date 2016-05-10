@@ -2,6 +2,7 @@ import React from 'react'
 
 import ItemInput from './ItemInput'
 import Archive from './Archive'
+import ArchiveInput from './ArchiveInput'
 
 import ImmutableProptypes from 'react-immutable-proptypes'
 
@@ -13,12 +14,12 @@ const App = React.createClass({
     activeArchive: ImmutableProptypes.map.isRequired,
   },
   render: function() {
-    let { activeArchive, addItem } = this.props
+    let { activeArchive, dispatchAddItem, dispatchAddArchive } = this.props
     return (
       <div>
-        <div><input /><button>New Archive</button></div>
+        <ArchiveInput dispatchAddArchive={ dispatchAddArchive }/>
         <h1>{ activeArchive.get('name') }</h1>
-        <ItemInput addItem={ addItem } activeArchive={ activeArchive } />
+        <ItemInput dispatchAddItem={ dispatchAddItem } activeArchive={ activeArchive } />
         <Archive key={ activeArchive.get('id') } name={ activeArchive.get('name') } items={ activeArchive.get('items') } />
       </div>
     )

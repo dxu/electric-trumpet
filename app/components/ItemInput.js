@@ -4,7 +4,7 @@ import React from 'react'
 const ItemInput = React.createClass({
   onKey: function(evt) {
     if (evt.keyCode === 13 && !evt.shiftKey) {
-      this.props.addItem({
+      this.props.dispatchAddItem({
         // NOTE: ASSUMING CLIENT ONLY, no xss sanitization
         text: this._el.innerHTML,
         archive_id: this.props.activeArchive.get('id')

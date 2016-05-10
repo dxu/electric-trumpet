@@ -20,6 +20,7 @@ export const addItem = (data) => {
 }
 
 export const addArchive = (data) => {
+  console.log('data', data)
   return {
     type: ADD_ARCHIVE,
     id: guid(),
