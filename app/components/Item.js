@@ -5,11 +5,16 @@ const Item = React.createClass({
     text: React.PropTypes.string.isRequired  
   },
 
+  createMarkup: function() {
+    return {
+      __html: this.props.text
+    }
+    
+  },
+
   render: function() {
     return (
-      <div>
-        { this.props.text }
-      </div>
+      <div dangerouslySetInnerHTML={ {__html: this.props.text} }></div>
     )
   }
 })

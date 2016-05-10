@@ -26,9 +26,10 @@ const selectors = (state) => {
 
 const dispatchers = (dispatch) => {
   return {
-    addItem: (text) => {
+    addItem: (data) => {
       dispatch(addItem({
-        text: text
+        text: data.text,
+        archive_id: data.archive_id
       }))
     },
     addArchive: (name) => {

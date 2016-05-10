@@ -40,6 +40,7 @@ function archives(state = Immutable.List(), action) {
 
 function items(state = Immutable.List(), action) {
   switch (action.type) {
+    // TODO: SHOULD SANITIZE IF EVER STORING THIS
     case ADD_ITEM:
       return state.push(Immutable.Map({
           text: action.text,
