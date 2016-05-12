@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import { addItem, addArchive } from './actions'
 import store from './store'
 
+
 let x = 10
 
 function ready(fn) {

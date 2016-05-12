@@ -1,6 +1,9 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import reducers from './reducers'
 import Immutable from 'immutable'
+import createSagaMiddleware from 'redux-saga'
+
+import { watchFetchItems, watchFetchArchives } from './sagas'
 
 import { DEFAULT_ARCHIVE_ID, DEFAULT_ARCHIVE_NAME } from './util/constants'
 
@@ -14,4 +17,12 @@ const defaultStore = {
   activeArchive: DEFAULT_ARCHIVE_ID
 }
 
-export default createStore(reducers, Immutable.fromJS(defaultStore))
+const sagaMiddleware = createSagaMiddleware()
+const store = createStore(reducers, 
+                           Immutable.fromJS(defaultStore),
+                           applyMiddleware(sagaMiddleware))
+
+sagaMiddleware.run(watchFetchArchives)
+sagaMiddleware.run(watchFetchItems)
+
+export default store
