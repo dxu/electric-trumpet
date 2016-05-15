@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux-immutablejs'
-import { ADD_ITEM, ADD_ARCHIVE, SET_ACTIVE_ARCHIVE } from '../actions'
+import { ADD_ITEM, ADD_ARCHIVE, SET_ACTIVE_ARCHIVE, ARCHIVES_RECEIVED, ARCHIVES_NOT_RECEIVED, ARCHIVE_ADDED, ARCHIVE_NOT_ADDED } from '../actions'
 
 import { DEFAULT_ARCHIVE_ID } from '../util/constants'
 
@@ -10,13 +10,13 @@ import Immutable from 'immutable'
  *  {
  *    archives: [
  *      {
- *        id: '',
+ *        _id: '',
  *        name: 'Sample name'
  *      }, ...
  *    ]
  *    items: [
  *      {
- *        id: '',
+ *        _id: '',
  *        archive_id: '',
  *        content: '', 
  *        date: date
@@ -28,11 +28,23 @@ import Immutable from 'immutable'
 
 function archives(state = Immutable.List(), action) {
   switch (action.type) {
+    case ARCHIVES_RECEIVED: 
+      console.log('yoo', state)
+      return state.concat(Immutable.fromJS(action.archives))
+    case ARCHIVE_ADDED:
+      console.log('archive added')
+      return state
+    case ARCHIVE_NOT_ADDED:
+      console.error('archive not added', action.error)
+      return state
     case ADD_ARCHIVE:
       return state.push(Immutable.Map({
         name: action.name,
-        id: action.id
+        _id: action._id
       }))
+    case ARCHIVES_NOT_RECEIVED: 
+      console.error(action.error)
+      return state
     default:
       return state
   }
@@ -44,7 +56,7 @@ function items(state = Immutable.List(), action) {
     case ADD_ITEM:
       return state.push(Immutable.Map({
           text: action.text,
-          id: action.id,
+          _id: action._id,
           date: action.date,
           archive_id: action.archive_id
         }))
@@ -56,7 +68,7 @@ function items(state = Immutable.List(), action) {
 function activeArchive(state = DEFAULT_ARCHIVE_ID, action) {
   switch (action.type) {
     case SET_ACTIVE_ARCHIVE:
-      return action.id
+      return action._id
     default:
       return state
   }
