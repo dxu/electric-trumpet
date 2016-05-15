@@ -43,3 +43,8 @@ export const setActiveArchive = (data) => {
   }
 }
 
+export const getArchives = () => {
+  return {
+    type: ARCHIVES_REQUESTED
+  }
+}

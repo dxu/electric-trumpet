@@ -1,10 +1,13 @@
-import { call, put, takeEvery } from 'redux-saga'
+import { takeEvery } from 'redux-saga'
+import { call, put } from 'redux-saga/effects'
 import { ARCHIVES_RECEIVED, ARCHIVES_REQUESTED, ARCHIVES_NOT_RECEIVED, ITEMS_RECEIVED, ITEMS_REQUESTED, ITEMS_NOT_RECEIVED  } from '../actions'
+
+import db from '../db'
 
 import 'babel-polyfill'
 
 function getArchives() {
-  return {}
+  return db.query('archive_index/by_type')
 }
 
 function getItems() {
@@ -18,6 +21,7 @@ export function* watchFetchArchives() {
 function* fetchArchives() {
   try {
     const archives = yield call(getArchives)
+    console.log('archives',archives)
     yield put({ type: ARCHIVES_RECEIVED, archives })
   }  
   catch(error) {

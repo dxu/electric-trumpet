@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import Immutable from 'immutable'
 import { Provider } from 'react-redux'
 
-import { addItem, addArchive } from './actions'
+import { addItem, addArchive, getArchives } from './actions'
 import store from './store'
 
 
@@ -19,6 +19,7 @@ function ready(fn) {
 }
 
 ready(() => {
+  store.dispatch(getArchives())
   ReactDOM.render(
     <Provider store={ store }>
       <Conduit />
