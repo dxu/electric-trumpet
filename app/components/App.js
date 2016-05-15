@@ -23,7 +23,7 @@ const App = React.createClass({
         <ItemInput dispatchAddItem={ dispatchAddItem } activeArchive={ activeArchive } />
 
         <Archives archives={ archives } />
-        <Archive key={ activeArchive.get('id') } name={ activeArchive.get('name') } items={ activeArchive.get('items') } />
+        <Archive key={ activeArchive.get('_id') } name={ activeArchive.get('name') } items={ activeArchive.get('items') } />
       </div>
     )
   }

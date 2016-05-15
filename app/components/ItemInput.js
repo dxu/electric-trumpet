@@ -7,7 +7,7 @@ const ItemInput = React.createClass({
       this.props.dispatchAddItem({
         // NOTE: ASSUMING CLIENT ONLY, no xss sanitization
         text: this._el.innerHTML,
-        archive_id: this.props.activeArchive.get('id')
+        archive_id: this.props.activeArchive.get('_id')
       })
       this._el.innerHTML = ''
     }

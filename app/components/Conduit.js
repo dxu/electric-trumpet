@@ -6,7 +6,7 @@ import App from './App'
 
 
 const selectActiveArchive = (archives, activeArchiveID) => {
-  return archives.find(archive => activeArchiveID === archive.get('id'))
+  return archives.find(archive => activeArchiveID === archive.get('_id'))
 }
 
 
