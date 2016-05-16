@@ -1,7 +1,6 @@
 import db from './index'
 
 export function putArchive(data) {
-  console.log('get data', data)
   return db.put({
     _id: data._id,
     name: data.name,
@@ -11,7 +10,6 @@ export function putArchive(data) {
 }
 
 export function putItem(data) {
-  console.log('get data', data)
   return db.put({
     _id: data._id,
     text: data.text,

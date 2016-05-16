@@ -15,7 +15,6 @@ const App = React.createClass({
     activeArchive: ImmutableProptypes.map.isRequired,
   },
   render: function() {
-    console.log(this.props.activeArchive.toJS(), 'we')
     let { activeArchive, dispatchAddItem, dispatchAddArchive, archives } = this.props
     return (
       <div>

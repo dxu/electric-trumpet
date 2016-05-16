@@ -45,11 +45,9 @@ export function* watchFetchItems() {
 }
 
 function* fetchItems() {
-  console.log('hello fetchitem')
   try {
     let items = yield call(dbGetItems)
     items = items.rows.map((item) => {
-      console.log('inside item', item)
       return {
         _id: item.doc._id,
         text: item.doc.text,
@@ -57,7 +55,6 @@ function* fetchItems() {
         archive_id: item.doc.archive_id
       }
     })
-    console.log('inside item', items)
     yield put({ type: ITEMS_RECEIVED, items })
   }  
   catch(error) {
@@ -100,12 +97,10 @@ function dbAddItem(action) {
 
 /* adding archives */
 export function* watchAddItem() {
-  console.log('watching adding')
   yield* takeEvery(ITEM_ADDING, addItem)
 }
 
 function* addItem(action) {
-  console.log('action', action)
   try {
     let item = yield call(dbAddItem, action)
     // TODO: supposed to return archive as something with id, rev, and "ok: true"

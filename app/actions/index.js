@@ -26,7 +26,6 @@ export const addItem = (data) => {
   // default value 
   data.archive_id = data.archive_id || DEFAULT_ARCHIVE_ID
 
-  console.log('hitting this')
   return {
     type: ITEM_ADDING,
     _id: guid(),
@@ -37,7 +36,6 @@ export const addItem = (data) => {
 }
 
 export const addArchive = (data) => {
-  console.log('data', data)
   return {
     type: ARCHIVE_ADDING,
     _id: guid(),

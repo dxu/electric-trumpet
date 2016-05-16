@@ -29,10 +29,8 @@ import Immutable from 'immutable'
 function archives(state = Immutable.List(), action) {
   switch (action.type) {
     case ARCHIVES_RECEIVED: 
-      console.log('yoo', state)
       return state.concat(Immutable.fromJS(action.archives))
     case ARCHIVE_ADDED:
-      console.log('archive added', action)
       return state.push(Immutable.fromJS(action.archive))
     case ARCHIVE_NOT_ADDED:
       console.error('archive not added', action.error)
