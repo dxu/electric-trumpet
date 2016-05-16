@@ -57,3 +57,9 @@ export const getArchives = () => {
     type: ARCHIVES_REQUESTING
   }
 }
+
+export const getItems = () => {
+  return {
+    type: ITEMS_REQUESTING
+  }
+}

@@ -16,13 +16,15 @@ const selectActiveArchive = (archives, activeArchiveID) => {
 // these selectors will handle the unflattening of the store.
 const selectors = (state) => {
   const archives = state.get('archives')
-  const activeArchive = archives.length ?
-    selectActiveArchive(archives, state.get('activeArchive'))
+  const activeArchiveID = state.get('activeArchive')
+  const activeArchive = archives.size ?
+    selectActiveArchive(archives, activeArchiveID)
       .merge({
         items: state.get('items').filter(item => item.get('archive_id') === state.get('activeArchive'))
       }) :
-    Immutable.Map({
-      _id: '',
+    // before data is fetched from pouchdb
+    Immutable.fromJS({
+      _id: activeArchiveID,
       items: []
     })
   return {

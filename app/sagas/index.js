@@ -12,21 +12,6 @@ function dbGetArchives() {
   return ops.queryArchives()
 }
 
-
-
-function getItems() {
-  return {}
-}
-
-function dbAddArchive(action) {
-  return ops.putArchive(action) 
-}
-
-function dbAddItem(action) {
-  return ops.putItem(action)
-}
-
-
 /* fetching archives */
 export function* watchFetchArchives() {
   yield* takeEvery(ARCHIVES_REQUESTING, fetchArchives)
@@ -47,6 +32,45 @@ function* fetchArchives() {
     yield put({type: ARCHIVES_NOT_RECEIVED, error})
   }
 }
+
+
+
+function dbGetItems() {
+  return ops.queryItems()
+}
+
+/* fetching archives */
+export function* watchFetchItems() {
+  yield* takeEvery(ITEMS_REQUESTING, fetchItems)
+}
+
+function* fetchItems() {
+  console.log('hello fetchitem')
+  try {
+    let items = yield call(dbGetItems)
+    items = items.rows.map((item) => {
+      console.log('inside item', item)
+      return {
+        _id: item.doc._id,
+        text: item.doc.text,
+        date: item.doc.date,
+        archive_id: item.doc.archive_id
+      }
+    })
+    console.log('inside item', items)
+    yield put({ type: ITEMS_RECEIVED, items })
+  }  
+  catch(error) {
+    yield put({type: ITEMS_NOT_RECEIVED, error})
+  }
+}
+
+function dbAddArchive(action) {
+  return ops.putArchive(action) 
+}
+
+
+
 
 /* adding archives */
 export function* watchAddArchive() {
@@ -70,20 +94,8 @@ function* addArchive(action) {
   }
 }
 
-
-/* fetching items*/
-export function* watchFetchItems() {
-  yield* takeEvery(ITEMS_REQUESTING, fetchItems)
-}
-
-function* fetchItems() {
-  try {
-    const archives = yield call(dbGetArchives)
-    yield put({ type: ITEMS_RECEIVED, archives })
-  }  
-  catch(error) {
-    yield put({ITEMS_NOT_RECEIVED})
-  }
+function dbAddItem(action) {
+  return ops.putItem(action)
 }
 
 /* adding archives */
