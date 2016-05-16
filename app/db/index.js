@@ -4,7 +4,7 @@ const db = new PouchDB('electric-trumpet')
 
 /*
 {
-  id: uuid, (required)
+  _id: uuid, (required)
   type: 0, 1 for archive or list item, (required)
 
 
@@ -32,5 +32,7 @@ db.put(ddoc).then(function () {
     console.error('error indexed', err)
   }
 });
+
+window.db = db;
 
 export default db
