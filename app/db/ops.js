@@ -10,10 +10,30 @@ export function putArchive(data) {
   })
 }
 
+export function putItem(data) {
+  console.log('get data', data)
+  return db.put({
+    _id: data._id,
+    text: data.text,
+    date: data.date,
+    archive_id: data.archive_id,
+    // indicates the type is an item
+    type: 1
+  })
+}
+
 export function queryArchives() {
-  return db.query('archive_index/by_type', {
+  return db.query('type_index/by_type', {
     // for archives
     key: 0,
+    include_docs: true
+  })
+}
+
+export function queryItems() {
+  return db.query('type_index/by_type', {
+    // for archives
+    key: 1,
     include_docs: true
   })
 }

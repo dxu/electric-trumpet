@@ -14,6 +14,10 @@ export const ARCHIVE_ADDING = 'ARCHIVE_ADDING'
 export const ARCHIVE_ADDED = 'ARCHIVE_ADDED'
 export const ARCHIVE_NOT_ADDED = 'ARCHIVE_NOT_ADDED'
 
+export const ITEM_ADDING = 'ITEM_ADDING'
+export const ITEM_ADDED = 'ITEM_ADDED'
+export const ITEM_NOT_ADDED = 'ITEM_NOT_ADDED'
+
 export const ITEMS_REQUESTING = 'ITEMS_REQUESTING'
 export const ITEMS_RECEIVED = 'ITEMS_RECEIVED'
 export const ITEMS_NOT_RECEIVED = 'ITEMS_NOT_RECEIVED'
@@ -22,8 +26,9 @@ export const addItem = (data) => {
   // default value 
   data.archive_id = data.archive_id || DEFAULT_ARCHIVE_ID
 
+  console.log('hitting this')
   return {
-    type: ADD_ITEM,
+    type: ITEM_ADDING,
     _id: guid(),
     text: data.text,
     date: new Date().getTime(),

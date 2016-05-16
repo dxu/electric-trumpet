@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux-immutablejs'
-import { ADD_ITEM, ADD_ARCHIVE, SET_ACTIVE_ARCHIVE, ARCHIVES_RECEIVED, ARCHIVES_NOT_RECEIVED, ARCHIVE_ADDED, ARCHIVE_NOT_ADDED } from '../actions'
+import { ADD_ITEM, ADD_ARCHIVE, SET_ACTIVE_ARCHIVE, ARCHIVES_RECEIVED, ARCHIVES_NOT_RECEIVED, ARCHIVE_ADDED, ARCHIVE_NOT_ADDED, ITEM_ADDED, ITEM_NOT_ADDED } from '../actions'
 
 import { DEFAULT_ARCHIVE_ID } from '../util/constants'
 
@@ -60,6 +60,11 @@ function items(state = Immutable.List(), action) {
           date: action.date,
           archive_id: action.archive_id
         }))
+    case ITEM_ADDED:
+      return state.push(Immutable.fromJS(action.item))
+    case ITEM_NOT_ADDED:
+      console.error(action.error)
+      return state
     default:
       return state
   }

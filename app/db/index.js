@@ -1,6 +1,7 @@
 import PouchDB from 'pouchdb'
 const db = new PouchDB('electric-trumpet')
 
+import { DEFAULT_ARCHIVE_ID, DEFAULT_ARCHIVE_NAME } from '../util/constants'
 
 /*
 {
@@ -11,8 +12,8 @@ const db = new PouchDB('electric-trumpet')
 }
 */
 
-var ddoc = {
-  _id: '_design/archive_index',
+var archiveIndexDD = {
+  _id: '_design/type_index',
   views: {
     by_type: {
       map: function(doc) {
@@ -22,8 +23,25 @@ var ddoc = {
   }
 }
 
+
 // save it
-db.put(ddoc).then(function () {
+db.put(archiveIndexDD).then(function () {
+  console.log('successfully indexed')
+}).catch(function (err) {
+  if (err.status === 409) {
+    console.error('index already exists', err)
+  } else {
+    console.error('error indexed', err)
+  }
+});
+
+
+// put the uncategorized row
+db.put({
+  _id: DEFAULT_ARCHIVE_ID,
+  name: DEFAULT_ARCHIVE_NAME,
+  type: 0
+}).then(function () {
   console.log('successfully indexed')
 }).catch(function (err) {
   if (err.status === 409) {

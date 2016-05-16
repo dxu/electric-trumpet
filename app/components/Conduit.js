@@ -1,5 +1,8 @@
 import { connect } from 'react-redux'
+import Immutable from 'immutable'
+
 import { addItem, addArchive, getArchives } from '../actions'
+
 import App from './App'
 
 // The Conduit currently just connects all of the data, because we don't need special selectors for the application at this time
@@ -12,11 +15,16 @@ const selectActiveArchive = (archives, activeArchiveID) => {
 
 // these selectors will handle the unflattening of the store.
 const selectors = (state) => {
-  const activeArchive = 
-    selectActiveArchive(state.get('archives'), state.get('activeArchive'))
+  const archives = state.get('archives')
+  const activeArchive = archives.length ?
+    selectActiveArchive(archives, state.get('activeArchive'))
       .merge({
         items: state.get('items').filter(item => item.get('archive_id') === state.get('activeArchive'))
-      })
+      }) :
+    Immutable.Map({
+      _id: '',
+      items: []
+    })
   return {
     items: state.get('items'),
     archives: state.get('archives'),

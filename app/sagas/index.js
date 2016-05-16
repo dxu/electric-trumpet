@@ -1,6 +1,6 @@
 import { takeEvery } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
-import { ARCHIVE_ADDING, ARCHIVE_NOT_ADDED, ARCHIVE_ADDED, ARCHIVES_RECEIVED, ARCHIVES_REQUESTING, ARCHIVES_NOT_RECEIVED, ITEMS_RECEIVED, ITEMS_REQUESTING, ITEMS_NOT_RECEIVED  } from '../actions'
+import { ARCHIVE_ADDING, ARCHIVE_NOT_ADDED, ARCHIVE_ADDED, ARCHIVES_RECEIVED, ARCHIVES_REQUESTING, ARCHIVES_NOT_RECEIVED, ITEMS_RECEIVED, ITEMS_REQUESTING, ITEMS_NOT_RECEIVED, ITEM_ADDING, ITEM_ADDED, ITEM_NOT_ADDED } from '../actions'
 
 
 import db from '../db'
@@ -19,8 +19,11 @@ function getItems() {
 }
 
 function dbAddArchive(action) {
-  console.log('adding')
   return ops.putArchive(action) 
+}
+
+function dbAddItem(action) {
+  return ops.putItem(action)
 }
 
 
@@ -33,13 +36,11 @@ function* fetchArchives() {
   try {
     let archives = yield call(dbGetArchives)
     archives = archives.rows.map((item) => {
-      console.log('item', item)
       return {
         name: item.doc.name,
         _id: item.doc._id
       }
     })
-    console.log('archives',archives)
     yield put({ type: ARCHIVES_RECEIVED, archives })
   }  
   catch(error) {
@@ -53,16 +54,8 @@ export function* watchAddArchive() {
 }
 
 function* addArchive(action) {
-  console.log('action', action)
   try {
     let archive = yield call(dbAddArchive, action)
-    // archives = archives.rows.map((item) => {
-    //   return {
-    //     name: item.name,
-    //     _id: item._id
-    //   }
-    // })
-    console.log('archives', archive)
     // TODO: supposed to return archive as something with id, rev, and "ok: true"
     yield put({ 
       type: ARCHIVE_ADDED, 
@@ -92,3 +85,31 @@ function* fetchItems() {
     yield put({ITEMS_NOT_RECEIVED})
   }
 }
+
+/* adding archives */
+export function* watchAddItem() {
+  console.log('watching adding')
+  yield* takeEvery(ITEM_ADDING, addItem)
+}
+
+function* addItem(action) {
+  console.log('action', action)
+  try {
+    let item = yield call(dbAddItem, action)
+    // TODO: supposed to return archive as something with id, rev, and "ok: true"
+    yield put({ 
+      type: ITEM_ADDED, 
+      item: {
+        _id: action._id,
+        text: action.text,
+        date: action.date,
+        archive_id: action.archive_id
+      }
+    })
+  }  
+  catch(error) {
+    yield put({type: ITEM_NOT_ADDED, error})
+  }
+}
+
+
