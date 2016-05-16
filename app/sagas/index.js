@@ -62,8 +62,15 @@ function* addArchive(action) {
     //     _id: item._id
     //   }
     // })
-    console.log('archives')
-    yield put({ type: ARCHIVE_ADDED, archive })
+    console.log('archives', archive)
+    // TODO: supposed to return archive as something with id, rev, and "ok: true"
+    yield put({ 
+      type: ARCHIVE_ADDED, 
+      archive: {
+        _id: action._id,
+        name: action.name
+      }
+    })
   }  
   catch(error) {
     yield put({type: ARCHIVE_NOT_ADDED, error})

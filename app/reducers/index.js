@@ -32,8 +32,8 @@ function archives(state = Immutable.List(), action) {
       console.log('yoo', state)
       return state.concat(Immutable.fromJS(action.archives))
     case ARCHIVE_ADDED:
-      console.log('archive added')
-      return state
+      console.log('archive added', action)
+      return state.push(Immutable.fromJS(action.archive))
     case ARCHIVE_NOT_ADDED:
       console.error('archive not added', action.error)
       return state
