@@ -27,10 +27,11 @@ app.on('ready', function() {
 
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/index.html');
-  quickNote.loadURL('file://' + __dirname + '/')
+  quickNote.loadURL('file://' + __dirname + '/quickNote.html')
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+  quickNote.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
