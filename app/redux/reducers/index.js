@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux-immutablejs'
 import { ADD_ITEM, ADD_ARCHIVE, SET_ACTIVE_ARCHIVE, ARCHIVES_RECEIVED, ARCHIVES_NOT_RECEIVED, ARCHIVE_ADDED, ARCHIVE_NOT_ADDED, ITEM_ADDED, ITEM_NOT_ADDED, ITEMS_RECEIVED, ITEMS_NOT_RECEIVED, DISPLAY_ARCHIVES } from '../actions'
 
-import { DEFAULT_ARCHIVE_ID } from '../util/constants'
+import { DEFAULT_ARCHIVE_ID } from '../../util/constants'
 
 import Immutable from 'immutable'
 

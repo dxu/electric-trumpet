@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware } from 'redux'
-import reducers from './reducers'
 import Immutable from 'immutable'
 import createSagaMiddleware from 'redux-saga'
 
 import { watchFetchItems, watchFetchArchives, watchAddArchive, watchAddItem } from './sagas'
+import reducers from './reducers'
 
-import { DEFAULT_ARCHIVE_ID, DEFAULT_ARCHIVE_NAME } from './util/constants'
+import { DEFAULT_ARCHIVE_ID, DEFAULT_ARCHIVE_NAME } from '../util/constants'
 
 const defaultStore = {
   archives: [

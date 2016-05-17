@@ -1,11 +1,11 @@
-import Conduit from './components/Conduit'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Immutable from 'immutable'
 import { Provider } from 'react-redux'
 
-import { addItem, addArchive, getArchives, getItems } from './actions'
-import store from './store'
+import Conduit from './components/Conduit'
+import { addItem, addArchive, getArchives, getItems } from './redux/actions'
+import store from './redux/store'
 
 
 let x = 10

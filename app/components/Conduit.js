@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Immutable from 'immutable'
 
-import { addItem, addArchive, getArchives, displayArchives } from '../actions'
+import { addItem, addArchive, getArchives, displayArchives } from '../redux/actions'
 
 import App from './App'
 

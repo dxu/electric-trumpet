@@ -3,8 +3,8 @@ import { call, put } from 'redux-saga/effects'
 import { ARCHIVE_ADDING, ARCHIVE_NOT_ADDED, ARCHIVE_ADDED, ARCHIVES_RECEIVED, ARCHIVES_REQUESTING, ARCHIVES_NOT_RECEIVED, ITEMS_RECEIVED, ITEMS_REQUESTING, ITEMS_NOT_RECEIVED, ITEM_ADDING, ITEM_ADDED, ITEM_NOT_ADDED } from '../actions'
 
 
-import db from '../db'
-import * as ops from '../db/ops'
+import db from '../../db'
+import * as ops from '../../db/ops'
 
 import 'babel-polyfill'
 
