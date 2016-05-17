@@ -7,6 +7,7 @@ const BrowserWindow = electron.BrowserWindow;  // Module to create native browse
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 var mainWindow = null;
+var quickNote = null;
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
@@ -21,10 +22,12 @@ app.on('window-all-closed', function() {
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 600, height: 800});
+  mainWindow = new BrowserWindow({ width: 600, height: 800, frame: false });
+  quickNote = new BrowserWindow({ width: 600, height: 300, frame: false });
 
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/index.html');
+  quickNote.loadURL('file://' + __dirname + '/')
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
