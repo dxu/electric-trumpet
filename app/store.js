@@ -10,7 +10,8 @@ import { DEFAULT_ARCHIVE_ID, DEFAULT_ARCHIVE_NAME } from './util/constants'
 const defaultStore = {
   archives: [
   ],
-  activeArchive: DEFAULT_ARCHIVE_ID
+  activeArchive: DEFAULT_ARCHIVE_ID,
+  displayArchives: false
 }
 
 const sagaMiddleware = createSagaMiddleware()

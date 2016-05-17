@@ -22,6 +22,8 @@ export const ITEMS_REQUESTING = 'ITEMS_REQUESTING'
 export const ITEMS_RECEIVED = 'ITEMS_RECEIVED'
 export const ITEMS_NOT_RECEIVED = 'ITEMS_NOT_RECEIVED'
 
+export const DISPLAY_ARCHIVES = 'DISPLAY_ARCHIVES'
+
 export const addItem = (data) => {
   // default value 
   data.archive_id = data.archive_id || DEFAULT_ARCHIVE_ID
@@ -59,5 +61,13 @@ export const getArchives = () => {
 export const getItems = () => {
   return {
     type: ITEMS_REQUESTING
+  }
+}
+
+export const displayArchives = (shouldDisplay) => {
+  console.log('wefjoiejwfoj', shouldDisplay)
+  return {
+    type: DISPLAY_ARCHIVES,
+    displayArchives: shouldDisplay
   }
 }

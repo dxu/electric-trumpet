@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Immutable from 'immutable'
 
-import { addItem, addArchive, getArchives } from '../actions'
+import { addItem, addArchive, getArchives, displayArchives } from '../actions'
 
 import App from './App'
 
@@ -30,7 +30,8 @@ const selectors = (state) => {
   return {
     items: state.get('items'),
     archives: state.get('archives'),
-    activeArchive: activeArchive
+    activeArchive: activeArchive,
+    displayArchives: state.get('displayArchives')
   }  
 }
 
@@ -51,6 +52,10 @@ const dispatchers = (dispatch) => {
         name: data.name
       }))
     },
+    dispatchShouldDisplay: (shouldDisplay=false) => {
+      console.log('hi')
+      dispatch(displayArchives(shouldDisplay))
+    }
   } 
 }
 

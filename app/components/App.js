@@ -15,15 +15,26 @@ const App = React.createClass({
     activeArchive: ImmutableProptypes.map.isRequired,
   },
   render: function() {
-    let { activeArchive, dispatchAddItem, dispatchAddArchive, archives } = this.props
+    let { activeArchive, dispatchShouldDisplay, dispatchAddItem, dispatchAddArchive, archives, displayArchives } = this.props
+    let style = {
+      '-webkit-app-region': 'drag'
+    }
+    // dispatchShouldDisplay(true)
     return (
       <div>
-        <ArchiveInput dispatchAddArchive={ dispatchAddArchive }/>
-        <h1>{ activeArchive.get('name') }</h1>
+        <h1 style={ style }>{ activeArchive.get('name') }</h1>
         <ItemInput dispatchAddItem={ dispatchAddItem } activeArchive={ activeArchive } />
-
-        <Archives archives={ archives } />
         <Archive key={ activeArchive.get('_id') } name={ activeArchive.get('name') } items={ activeArchive.get('items') } />
+
+        {
+          displayArchives ? 
+            (
+              <div>
+                <ArchiveInput dispatchAddArchive={ dispatchAddArchive }/>
+                <Archives archives={ archives } />
+              </div>
+            ) : null
+        }
       </div>
     )
   }
