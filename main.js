@@ -50,7 +50,7 @@ app.on('ready', function() {
   // Register a 'CommandOrControl+X' shortcut listener.
   const ret = globalShortcut.register('CommandOrControl+Shift+K', () => {
     console.log('CommandOrControl+K is pressed');
-    if (quickNote.isVisible()) {
+    if (quickNote.isVisible() && quickNote.isFocused()) {
       quickNote.hide()
     } else {
       quickNote.show()
