@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom'
 import Immutable from 'immutable'
 import { Provider } from 'react-redux'
 
-import Conduit from './components/Conduit'
+import createConduit from './components/Conduit'
 import { addItem, addArchive, getArchives, getItems } from './redux/actions'
 import store from './redux/store'
+import App from './components/App'
 
 
 let x = 10
@@ -19,6 +20,7 @@ function ready(fn) {
 }
 
 ready(() => {
+  const Conduit = createConduit(App)
   store.dispatch(getArchives())
   store.dispatch(getItems())
   ReactDOM.render(

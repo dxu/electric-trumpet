@@ -3,7 +3,7 @@ import Immutable from 'immutable'
 
 import { addItem, addArchive, getArchives, displayArchives } from '../redux/actions'
 
-import App from './App'
+// import App from './App'
 
 // The Conduit currently just connects all of the data, because we don't need special selectors for the application at this time
 
@@ -59,6 +59,8 @@ const dispatchers = (dispatch) => {
   } 
 }
 
-const Conduit = connect(selectors, dispatchers)(App)
+// const Conduit = connect(selectors, dispatchers)(App)
 
-export default Conduit
+export default function(App) {
+  return connect(selectors, dispatchers)(App)
+}

@@ -1,4 +1,4 @@
-import Conduit from './components/Conduit'
+import createConduit from './components/Conduit'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Immutable from 'immutable'
@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 
 import { addItem, addArchive, getArchives, getItems } from './redux/actions'
 import store from './redux/store'
+import Quick from './components/Quick'
 
 
 let x = 10
@@ -19,6 +20,7 @@ function ready(fn) {
 }
 
 ready(() => {
+  const Conduit = createConduit(Quick)
   store.dispatch(getArchives())
   store.dispatch(getItems())
   ReactDOM.render(
