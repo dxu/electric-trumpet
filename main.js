@@ -7,6 +7,7 @@ const channels = require('./app/util/channels')
 // be closed automatically when the JavaScript object is garbage collected.
 var mainWindow = null
 var quickNote = null
+var forceQuit = false
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
@@ -16,6 +17,19 @@ app.on('window-all-closed', function() {
     app.quit();
   }
 });
+
+app.on('before-quit', function() {
+  forceQuit = true
+  console.log('quitted')
+})
+
+app.on('will-quit', function() {
+  console.log('quitting')
+})
+
+app.on('quit', function() {
+  console.log('quitted')
+})
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -59,12 +73,24 @@ app.on('ready', function() {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
+    console.log("closedddd main")
   });
+
+//   // Emitted when the window is closed.
+//   mainWindow.on('close', function(evt) {
+//     // Dereference the window object, usually you would store windows
+//     // in an array if your app supports multi windows, this is the time
+//     // when you should delete the corresponding element.
+//     evt.preventDefault()
+//     mainWindow.hide()
+//   });
 
   // Emitted when the window is closed.
   quickNote.on('close', function(evt) {
     // never close the quickNote, only hide it
-    evt.preventDefault()
-    quickNote.hide()
+    if (!forceQuit) {
+      evt.preventDefault()
+      quickNote.hide()
+    }
   });
 });
