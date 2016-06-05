@@ -31,6 +31,12 @@ app.on('quit', function() {
   console.log('quitted')
 })
 
+app.on('activate', function() {
+  if (mainWindow) {
+    mainWindow.show()
+  }
+})
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
@@ -75,15 +81,25 @@ app.on('ready', function() {
     mainWindow = null;
     console.log("closedddd main")
   });
+  // Emitted when the window is closed.
+  quickNote.on('closed', function() {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    quickNote = null;
+    console.log("closedddd quickNote")
+  });
 
-//   // Emitted when the window is closed.
-//   mainWindow.on('close', function(evt) {
-//     // Dereference the window object, usually you would store windows
-//     // in an array if your app supports multi windows, this is the time
-//     // when you should delete the corresponding element.
-//     evt.preventDefault()
-//     mainWindow.hide()
-//   });
+  // Emitted when the window is closed.
+  mainWindow.on('close', function(evt) {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    if (!forceQuit) {
+      evt.preventDefault()
+      mainWindow.hide()
+    }
+  });
 
   // Emitted when the window is closed.
   quickNote.on('close', function(evt) {
