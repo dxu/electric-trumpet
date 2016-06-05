@@ -56,7 +56,8 @@ app.on('ready', function() {
   mainWindow = new BrowserWindow({ 
     width: MAIN_WINDOW_WIDTH,
     height: MAIN_WINDOW_HEIGHT,
-    frame: false 
+    frame: false,
+    resizable: false
   });
   quickNote = new BrowserWindow({ 
     width: QUICK_WINDOW_WIDTH,
