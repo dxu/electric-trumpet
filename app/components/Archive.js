@@ -8,7 +8,7 @@ const Archive = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className="archives-archive">
         {
           this.props.items.map((data) => {
             return <Item key={ data.get('_id') } text={ data.get('text') } />

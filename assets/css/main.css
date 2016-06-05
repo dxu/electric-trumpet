@@ -1,2 +1,26 @@
-body {
+#archives-active {
+  text-align: center;
+  font-size: 3.2rem;
+  height: 6rem;
+  line-height: 6rem;
+  margin: auto;
+  padding: 0 4rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
+
+#wrappers-archive {
+  padding: 0 40px;
+}
+
+.archives-archive {
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+}
+
+.items-input {
+  font-size: 1.6rem;
+  line-height: 5rem;
+}
+
+

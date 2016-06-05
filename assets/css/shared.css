@@ -1,0 +1,23 @@
+@font-face {
+    font-family: "Baskerville";
+    src: url("../fonts/LibreBaskerville-Regular.ttf");
+}
+@font-face {
+    font-family: "Baskerville";
+    src: url("../fonts/LibreBaskerville-Bold.ttf");
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Baskerville";
+    src: url("../fonts/LibreBaskerville-Italic.ttf");
+    font-style: italic;
+}
+@font-face {
+    font-family: "Baskerville";
+    src: url("../fonts/LibreBaskerville-Italic.ttf");
+    font-style: oblique;
+}
+
+body {
+  font-family: Baskerville;
+}

@@ -22,7 +22,8 @@ const ItemInput = React.createClass({
             <p>Adding to { activeArchive.get('name') }</p> :
             null
         }
-        <div contentEditable="true" 
+        <div className="items-input"
+          contentEditable="true" 
           data-placeholder="enter shit here"
           onKeyDown={ this.onKey }
           ref={ el => this._el = el }>
