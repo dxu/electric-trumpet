@@ -5,9 +5,9 @@ const channels = require('./app/util/channels')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-var mainWindow = null
-var quickNote = null
-var forceQuit = false
+let mainWindow = null
+let quickNote = null
+let forceQuit = false
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
@@ -20,15 +20,6 @@ app.on('window-all-closed', function() {
 
 app.on('before-quit', function() {
   forceQuit = true
-  console.log('quitted')
-})
-
-app.on('will-quit', function() {
-  console.log('quitting')
-})
-
-app.on('quit', function() {
-  console.log('quitted')
 })
 
 app.on('activate', function() {
@@ -61,40 +52,22 @@ app.on('ready', function() {
     } else {
       quickNote.show()
     }
-
-    
   });
 
   if (!ret) {
-    console.log('registration failed');
+    console.log('CommandOrControl+Shift+K registration failed');
   }
 
   // Check whether a shortcut is registered.
-  console.log(globalShortcut.isRegistered('CommandOrControl+X'));
-
+  console.log(globalShortcut.isRegistered('CommandOrControl+Shift+X'));
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', function() {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    mainWindow = null;
-    console.log("closedddd main")
-  });
+  mainWindow.on('closed', () => { mainWindow = null })
   // Emitted when the window is closed.
-  quickNote.on('closed', function() {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    quickNote = null;
-    console.log("closedddd quickNote")
-  });
+  quickNote.on('closed', () => { quickNote = null })
 
   // Emitted when the window is closed.
   mainWindow.on('close', function(evt) {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     if (!forceQuit) {
       evt.preventDefault()
       mainWindow.hide()
