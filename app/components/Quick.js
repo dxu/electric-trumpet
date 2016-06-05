@@ -17,7 +17,7 @@ const Quick = React.createClass({
   render: function() {
     let { activeArchive, dispatchAddItem} = this.props
     let style = {
-      '-webkit-app-region': 'drag'
+      // '-webkit-app-region': 'drag'
     }
     return (
       <div>

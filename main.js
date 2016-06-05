@@ -1,6 +1,7 @@
 'use strict';
 
-const {app, globalShortcut, BrowserWindow} = require('electron')
+const electron = require('electron')
+const { app, globalShortcut, BrowserWindow } = electron
 const channels = require('./app/util/channels')
 
 // active electron-debug
@@ -31,13 +32,41 @@ app.on('activate', function() {
   }
 })
 
+let MAIN_WINDOW_WIDTH  = 600
+let MAIN_WINDOW_HEIGHT = 800
+let QUICK_WINDOW_WIDTH  = 600
+let QUICK_WINDOW_HEIGHT  = 60
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
+  // let electronScreen = electron.screen
+  const { width: screenWidth, height: screenHeight } = electron.screen.getPrimaryDisplay().workAreaSize;
+  console.log('widths', screenWidth, screenHeight, screenWidth / 3.5, screenWidth / 3)
+
+  MAIN_WINDOW_WIDTH = Math.floor(screenWidth / 3.5)
+  MAIN_WINDOW_HEIGHT = Math.floor(screenHeight / 2)
+  QUICK_WINDOW_WIDTH = Math.floor(screenWidth / 3)
+
+  const QUICK_WINDOW_X = Math.floor(screenWidth / 2 - QUICK_WINDOW_WIDTH / 2)
+  const QUICK_WINDOW_Y = Math.floor(screenHeight / 2.5 - QUICK_WINDOW_HEIGHT / 2)
+
 
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: 600, height: 800, frame: false });
-  quickNote = new BrowserWindow({ width: 600, height: 300, frame: false, show: false });
+  mainWindow = new BrowserWindow({ 
+    width: MAIN_WINDOW_WIDTH,
+    height: MAIN_WINDOW_HEIGHT,
+    frame: false 
+  });
+  quickNote = new BrowserWindow({ 
+    width: QUICK_WINDOW_WIDTH,
+    height: QUICK_WINDOW_HEIGHT,
+    x: QUICK_WINDOW_X,
+    y: QUICK_WINDOW_Y,
+    frame: false,
+    show: false,
+    resizable: false
+  });
 
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/index.html');
