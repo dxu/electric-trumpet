@@ -9,14 +9,16 @@
         display: block;
     }
     </style>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
     <script>
       (function() {
-        if (!process.env.HOT) {
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = '../dist/style.css';
-          document.write(link.outerHTML);
-        }
+        // if (!process.env.HOT) {
+        //   const link = document.createElement('link');
+        //   link.rel = 'stylesheet';
+        //   link.href = './assets/css/main.css';
+        //   document.write(link.outerHTML);
+        // }
       }());
     </script>
   </head>
