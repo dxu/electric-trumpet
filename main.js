@@ -3,6 +3,9 @@
 const {app, globalShortcut, BrowserWindow} = require('electron')
 const channels = require('./app/util/channels')
 
+// active electron-debug
+require('electron-debug')({showDevTools: true});
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow = null
