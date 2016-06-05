@@ -16,13 +16,10 @@ const App = React.createClass({
   },
   render: function() {
     let { activeArchive, dispatchShouldDisplay, dispatchAddItem, dispatchAddArchive, archives, displayArchives } = this.props
-    let style = {
-      '-webkit-app-region': 'drag'
-    }
     // dispatchShouldDisplay(true)
     return (
       <div>
-        <h1 id="archives-active" style={ style }>{ activeArchive.get('name') }</h1>
+        <h1 id="archives-active">{ activeArchive.get('name') }</h1>
         <div id="wrappers-archive">
           <ItemInput 
             dispatchAddItem={ dispatchAddItem } 
