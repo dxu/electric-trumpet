@@ -32,8 +32,27 @@ body {
   font-family: Baskerville;
 }
 
-[contentEditable=true]:empty:not(:focus):before{
+
+/* [contentEditable=true]:empty:focus:before, */ 
+/* .items-input::-webkit-input-placeholder { */
+/*   /1* only applies for contentEditable *1/ */
+/*   content:attr(data-placeholder); */
+/*   font-size: 1.2rem; */
+/*   /1* ff *1/ */
+/*   display: block; */
+/* } */
+
+/* issue with rendering line height in contenteditable */ 
+[contentEditable=true]:empty:before, 
+.items-input-title::-webkit-input-placeholder {
+  /* only applies for contentEditable */
   content:attr(data-placeholder);
-  display: block;
   font-size: 1.2rem;
+  /* ff */
+  display: block;
 }
+
+/* [placeholder]:focus::-webkit-input-placeholder { */
+/*   color: transparent; */
+/* } */
+

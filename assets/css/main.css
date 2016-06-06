@@ -85,18 +85,36 @@ body {
   white-space: nowrap;
 }
 
-
-.items-input {
-  font-size: 1.6rem;
-  line-height: 5rem;
-}
-
-[contentEditable=true]{
+[contentEditable=true] {
   padding: 0 1.2rem;
   color: rgba(0, 0, 0, 0.6);
 }
 
-[contentEditable=true]:empty:not(:focus):before{
+[contentEditable=true]:empty:before,
+.items-input-title::-webkit-input-placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
+
+.items-input-content {
+  /* TODO: these are hardcoded values to make the 
+   * contenteditable accurately render the div */
+  padding-top: 15px;
+  padding-bottom: 15px;
+  line-height: 2.0rem;
+}
+
+.items-input-title,
+.items-input-content {
+  font-size: 1.6rem;
+  min-height: 5rem;
+}
+
+input.items-input-content,
+input.items-input-title {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+}
+
 
