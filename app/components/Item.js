@@ -2,12 +2,12 @@ import React from 'react'
 
 const Item = React.createClass({
   propTypes: {
-    content: React.PropTypes.string.isRequired  
+    title: React.PropTypes.string.isRequired  
   },
 
   createMarkup: function() {
     return {
-      __html: this.props.content
+      __html: this.props.title
     }
     
   },
@@ -18,7 +18,7 @@ const Item = React.createClass({
         <div className="items-item-date">
           1D
         </div>
-        <div className="items-item-title" dangerouslySetInnerHTML={ {__html: this.props.content} }>
+        <div className="items-item-title" dangerouslySetInnerHTML={ {__html: this.props.title} }>
         </div>
       
       </div>

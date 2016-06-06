@@ -59,6 +59,7 @@ function items(state = Immutable.List(), action) {
     case ADD_ITEM:
       return state.push(Immutable.Map({
           content: action.content,
+          title: action.title,
           _id: action._id,
           date: action.date,
           archive_id: action.archive_id

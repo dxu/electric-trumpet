@@ -24,7 +24,8 @@ const App = React.createClass({
           <ItemInput 
             dispatchAddItem={ dispatchAddItem } 
             activeArchive={ activeArchive } 
-            placeholderText="Add something to do..." />
+            titlePlaceholderText="Add something to do..." 
+            contentPlaceholderText="Details?" />
           <Archive 
             key={ activeArchive.get('_id') } 
             name={ activeArchive.get('name') } 

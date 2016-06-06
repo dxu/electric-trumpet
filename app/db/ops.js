@@ -13,6 +13,7 @@ export function putItem(data) {
   console.log('data', data)
   return db.put({
     _id: data._id,
+    title: data.title,
     content: data.content,
     date: data.date,
     archive_id: data.archive_id,

@@ -51,6 +51,7 @@ function* fetchItems() {
       return {
         _id: item.doc._id,
         content: item.doc.content,
+        title: item.doc.title,
         date: item.doc.date,
         archive_id: item.doc.archive_id
       }
@@ -109,6 +110,7 @@ function* addItem(action) {
       item: {
         _id: action._id,
         content: action.content,
+        title: action.title,
         date: action.date,
         archive_id: action.archive_id
       }
