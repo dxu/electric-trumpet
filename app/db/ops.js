@@ -10,9 +10,10 @@ export function putArchive(data) {
 }
 
 export function putItem(data) {
+  console.log('data', data)
   return db.put({
     _id: data._id,
-    text: data.text,
+    content: data.content,
     date: data.date,
     archive_id: data.archive_id,
     // indicates the type is an item

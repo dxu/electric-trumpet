@@ -31,7 +31,7 @@ export const addItem = (data) => {
   return {
     type: ITEM_ADDING,
     _id: guid(),
-    text: data.text,
+    content: data.content,
     date: new Date().getTime(),
     archive_id: data.archive_id
   }

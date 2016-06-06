@@ -18,9 +18,9 @@ import Immutable from 'immutable'
  *      {
  *        _id: '',
  *        archive_id: '',
+ *        title: '',
  *        content: '', 
  *        date: date
- *
  *      }
  *    ]
  *  }
@@ -58,7 +58,7 @@ function items(state = Immutable.List(), action) {
     // TODO: SHOULD SANITIZE IF EVER STORING THIS
     case ADD_ITEM:
       return state.push(Immutable.Map({
-          text: action.text,
+          content: action.content,
           _id: action._id,
           date: action.date,
           archive_id: action.archive_id

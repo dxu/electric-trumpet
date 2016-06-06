@@ -50,7 +50,7 @@ function* fetchItems() {
     items = items.rows.map((item) => {
       return {
         _id: item.doc._id,
-        text: item.doc.text,
+        content: item.doc.content,
         date: item.doc.date,
         archive_id: item.doc.archive_id
       }
@@ -108,7 +108,7 @@ function* addItem(action) {
       type: ITEM_ADDED, 
       item: {
         _id: action._id,
-        text: action.text,
+        content: action.content,
         date: action.date,
         archive_id: action.archive_id
       }

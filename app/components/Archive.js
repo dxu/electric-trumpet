@@ -11,7 +11,7 @@ const Archive = React.createClass({
       <div className="archives-archive">
         {
           this.props.items.map((data) => {
-            return <Item key={ data.get('_id') } text={ data.get('text') } />
+            return <Item key={ data.get('_id') } content={ data.get('content') } />
           })
         }
       </div>

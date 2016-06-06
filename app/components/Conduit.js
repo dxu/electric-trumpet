@@ -43,7 +43,7 @@ const dispatchers = (dispatch) => {
     },
     dispatchAddItem: (data) => {
       dispatch(addItem({
-        text: data.text,
+        content: data.content,
         archive_id: data.archive_id
       }))
     },
