@@ -7,43 +7,43 @@ const ItemInput = React.createClass({
       evt.preventDefault()
       this.props.dispatchAddItem({
         // NOTE: ASSUMING CLIENT ONLY, no xss sanitization
-        content: this._el.innerHTML,
+        content: this._inputContentEl.innerHTML,
         archive_id: this.props.activeArchive.get('_id')
       })
-      this._el.innerHTML = ''
+      this._inputContentEl.innerHTML = ''
     }
   },
   onKeyAddTitle: function(evt) {
-    if (evt.keyCode === 13 && !evt.shiftKey) {
+    if (evt.keyCode === 13) {
       evt.preventDefault()
       this.props.dispatchAddItem({
         // NOTE: ASSUMING CLIENT ONLY, no xss sanitization
-        title: this._el.innerHTML,
+        title: this._inputTitleEl.value,
         archive_id: this.props.activeArchive.get('_id')
       })
-      this._el.innerHTML = ''
+      this._inputTitleEl.value = ''
     }
   },
   render: function() {
     const { activeArchive, displayArchive=false, contentPlaceholderText="" , titlePlaceholderText="" } = this.props
     return (
-      <div>
+      <div className="items-input" ref={ el => this._wrapperEl = el }>
         {
           displayArchive ? 
             <p>Adding to { activeArchive.get('name') }</p> :
             null
         }
-        <div className="items-input-content"
-          contentEditable="true" 
-          data-placeholder={contentPlaceholderText}
-          onKeyDown={ this.onKeyAddTitle }
-          ref={ el => this._el = el }>
-        </div>
         <input className="items-input-title"
           contentEditable="true" 
           placeholder={titlePlaceholderText}
           onKeyDown={ this.onKeyAddTitle }
-          ref={ el => this._el = el } />
+          ref={ el => this._inputTitleEl = el } />
+        <div className="items-input-content"
+          contentEditable="true" 
+          data-placeholder={contentPlaceholderText}
+          onKeyDown={ this.onKeyAddTitle }
+          ref={ el => this._inputContentEl = el }>
+        </div>
       </div>
     )
   }

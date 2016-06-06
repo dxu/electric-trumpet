@@ -95,6 +95,11 @@ body {
   color: rgba(0, 0, 0, 0.3);
 }
 
+.items-input {
+  height: 5rem;
+  overflow: hidden;
+}
+
 .items-input-content {
   /* TODO: these are hardcoded values to make the 
    * contenteditable accurately render the div */
