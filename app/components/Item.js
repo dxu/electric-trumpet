@@ -14,7 +14,14 @@ const Item = React.createClass({
 
   render: function() {
     return (
-      <div dangerouslySetInnerHTML={ {__html: this.props.text} }></div>
+      <div className="items-item">
+        <div className="items-item-date">
+          1D
+        </div>
+        <div className="items-item-title" dangerouslySetInnerHTML={ {__html: this.props.text} }>
+        </div>
+      
+      </div>
     )
   }
 })

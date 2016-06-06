@@ -23,7 +23,8 @@ const App = React.createClass({
         <div id="wrappers-archive">
           <ItemInput 
             dispatchAddItem={ dispatchAddItem } 
-            activeArchive={ activeArchive } />
+            activeArchive={ activeArchive } 
+            placeholderText="Add something to do..." />
           <Archive 
             key={ activeArchive.get('_id') } 
             name={ activeArchive.get('name') } 

@@ -14,7 +14,7 @@ const ItemInput = React.createClass({
     }
   },
   render: function() {
-    const { activeArchive, displayArchive=false } = this.props
+    const { activeArchive, displayArchive=false, placeholderText="" } = this.props
     return (
       <div>
         {
@@ -24,7 +24,7 @@ const ItemInput = React.createClass({
         }
         <div className="items-input"
           contentEditable="true" 
-          data-placeholder="enter shit here"
+          data-placeholder={placeholderText}
           onKeyDown={ this.onKey }
           ref={ el => this._el = el }>
         </div>

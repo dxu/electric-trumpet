@@ -18,12 +18,22 @@
     font-style: oblique;
 }
 
+@font-face {
+    font-family: "AlegreyaSans";
+    src: url("../fonts/AlegreyaSans-Thin.ttf");
+}
+
+
 body {
   font-family: Baskerville;
 }
 
+[contentEditable=true] {
+  font-family: Baskerville;
+}
 
 [contentEditable=true]:empty:not(:focus):before{
-    content:attr(data-placeholder);
-    display: block;
+  content:attr(data-placeholder);
+  display: block;
+  font-size: 1.2rem;
 }
